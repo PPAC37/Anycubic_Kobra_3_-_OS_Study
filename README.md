@@ -1,11 +1,23 @@
 # Anycubic_Kobra_3_-_OS_Study
-Mes notes sur le firmware KobraOS de la "Kobra 3"
+Mes notes sur le firmware / l'OS "KobraOS" de la "Kobra 3"
 
-Merci a  
+Merci à  
 [https://github.com/Bushmills](https://github.com/Bushmills)  
-pour son dépot (et surtout le wiki de son dépot)  
+pour le wiki son dépôt
 [https://github.com/Bushmills/Anycubic-Kobra-3-rooted](https://github.com/Bushmills/Anycubic-Kobra-3-rooted)  
 qui décrit une méthode pour accéder en root via `adb` au firmware/ a l'OS de la "Kobra 3" d'Anycubic.
+
+(  
+A cette date 2024-07-28, cette méthode semble fonctionner avec le firmware  
+V2.3.**1**.3_1.1.3_1.1.3_release  
+et  
+V2.3.**2**.3_1.1.3_1.1.3_release  
+de la "Kobra 3"  
+)
+
+
+Je travaille ici avec une "Kobra 3" ayant un firmware V2.3.**2**.3_1.1.3_1.1.3_release.
+
 
 ## Pré-requis
 
@@ -22,20 +34,21 @@ sudo apt-get install adb
   ...
 </pre>
 
-## Se connecter et ouvire un shell via 'adb' depuis votre ordinateur client.
+## Se connecter et ouvrir un shell via 'adb' depuis votre ordinateur client.
 
 Adaptation de la méthode décrite sur  
 [https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/shell-to-Kobra-3](https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/shell-to-Kobra-3)  
 pour une distribution Linux Ubuntu 20.04.
 
-Ici `192.168.1.35` est l'adresse IP affecté par le serveur DHCP par ma box internet a ma Kobra 3 sur mon réseau local. (il vous faudra adapter les commande suivante)
+Ici `192.168.1.35` est l'adresse IP affectée par le serveur DHCP par ma box internet a ma "Kobra 3" sur mon réseau local. (il vous faudra adapter les commande suivante, et éventuellement faire une règle d'association d'un IP fixe pour l'adresse MAC de votre "Kobra 3")
 
 
+Connecter `adb` a votre "Kobra 3"
 ~~~
 sudo adb connect 192.168.1.35
 ~~~
 <details>
- <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier !)</summary>
 <pre>
 $ sudo adb connect 192.168.1.35
 connected to 192.168.1.35:5555
@@ -43,17 +56,16 @@ connected to 192.168.1.35:5555
 </details>
 
 
-
+Après connexion réussie de `adb` a votre "Kobra 3",  
+ouvrir un shell via la commande `adb shell`
 ~~~
 adb shell
 ~~~
-<details>
- <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
+Résultat de la commande sur ma machine
 <pre>
 $ adb shell
 root@Rockchip:/# 
 </pre>
-</details>
 
 
 ### Configurer 'sshd' sur la Kobra 3
@@ -368,6 +380,7 @@ On arrive alors a plus simplement explorer/modifier l'arboressence de fichiers d
 ![Capture d’écran de 2024-07-28 00-18-03](https://github.com/user-attachments/assets/61dcd320-a909-4319-b99e-6d0f3eddd154)
 
 
+## D'autre résultat de commandes
 
 <!--
 // TODO // Code template a effacer mais que je garde cous le coude pour l'instant.
