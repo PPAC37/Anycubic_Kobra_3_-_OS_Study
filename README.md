@@ -141,21 +141,32 @@ root@Rockchip:/ac_lib/lib/openssh#
 </pre>
 </details>
 
- <!-- Vérifier ce que donne le caractère inférieur qui me fait bugger le html  (non terminaison du block pre et details) si je ne le convertie pas -->
+
 ~~~
-read pid &lt; /var/run/sshd.pid
+read pid < /var/run/sshd.pid
 kill $pid
 ~~~
+<!-- 
+// PB le caractère inférieur qui me fait bugger le html  (non terminaison du block pre et details ? )
+// &lt; n'aide pas.
+// <code></code> n'aide pas.
+// \<  n'aide pas.
+// ??? https://www.markdownguide.org/basic-syntax/#characters-you-can-escape
 <details>
  <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
-  <!-- Vérifier ce que donne le caractère inférieur qui me fait bugger le html  (non terminaison du block pre et details) si je ne le convertie pas -->
+
 <pre>
-root@Rockchip:/ac_lib/lib/openssh# read pid &lt; /var/run/sshd.pid
+root@Rockchip:/ac_lib/lib/openssh# read pid < /var/run/sshd.pid
 root@Rockchip:/ac_lib/lib/openssh# kill $pid
 root@Rockchip:/ac_lib/lib/openssh# 
 </pre>
 </detail>
-
+-->
+<pre>
+root@Rockchip:/ac_lib/lib/openssh# read pid < /var/run/sshd.pid
+root@Rockchip:/ac_lib/lib/openssh# kill $pid
+root@Rockchip:/ac_lib/lib/openssh# 
+</pre>
 
 Modifier le fichier de configuration du serveur sshd
 ~~~
@@ -238,54 +249,78 @@ Revenir sur la fenettre où l'on se trouve connecté sur un shell de la Kobra 3 
 ~~~
 chmod 600 etc/authorized_keys
 ~~~
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 root@Rockchip:/ac_lib/lib/openssh# chmod 600 etc/authorized_keys
+root@Rockchip:/ac_lib/lib/openssh# 
 </pre>
-
+</details>
 
 
 
 ~~~
 ./sshd_start.sh
 ~~~
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 root@Rockchip:/ac_lib/lib/openssh# ./sshd_start.sh 
 config
 root@Rockchip:/ac_lib/lib/openssh# 
 </pre>
-
+</details>
 
 Et là enfin votre post client doit avoir la posibilité de se connecter a la Kobra 3 comme utilisateur root en SSH.  
-(Mais pour l'instant le serveur sshd n'est pas lancé automatiquement et donc si on redémmare la Kobra 3 il faudra relancer le serveur SSH via un shell adb connecté a la Kobra 3
+
+
+(  
+
+
+Mais pour l'instant, le serveur sshd n'est pas re-lancé automatiquement et donc,  
+si on redémmare la Kobra 3,  
+il faudra relancer le serveur SSH via un shell adb connecté a la Kobra 3.
 
 ~~~
 sudo adb connect 192.168.1.35
 ~~~
+
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 $ sudo adb connect 192.168.1.35
 connected to 192.168.1.35:5555
 </pre>
-
+</details>
 
 ~~~
 adb shell
 ~~~
+
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 $ adb shell
 root@Rockchip:/# 
 </pre>
+</details>
 
 
 ~~~
 /ac_lib/lib/openssh/sshd_start.sh
 ~~~
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 root@Rockchip:/# ac_lib/lib/openssh/sshd_start.sh 
 config
 root@Rockchip:/# 
 </pre>
+</details>
+
 
 )
+
 
 
 Enfin pour vous connecter depuis votre ordinateur client
@@ -297,13 +332,19 @@ ou
 ssh root@192.168.1.35
 ~~~
 
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
+  ( block suivant seulement lors de la première tentative de connexion )
 <pre>
 The authenticity of host '192.168.1.35 (192.168.1.35)' can't be established.
-RSA key fingerprint is SHA256:YDCcZNnyA+IHSdm9pt1PNBvNdKuer4bKHqCrxfq176M.
+RSA key fingerprint is SHA256:*******************************************.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added '192.168.1.35' (RSA) to the list of known hosts.
+</pre>
+<pre>
 root@Rockchip:~# 
 </pre>
+</details>
 
 Ou graphiquement sous "Fichiers" (le gestionnaire de fichier par défaut sur une Ubuntu 20.04) via "Autres emplacements", "Connexion à un serveur" (en bas de la fenetre) 
 ![Capture d’écran de 2024-07-28 00-13-27](https://github.com/user-attachments/assets/861b73e5-78d5-4735-a422-7031207f229d)
