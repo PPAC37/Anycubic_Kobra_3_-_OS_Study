@@ -34,20 +34,27 @@ Ici `192.168.1.35` est l'adresse IP affecté par le serveur DHCP par ma box inte
 ~~~
 sudo adb connect 192.168.1.35
 ~~~
-résultat attendu
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 $ sudo adb connect 192.168.1.35
 connected to 192.168.1.35:5555
 </pre>
+</details>
+
 
 
 ~~~
 adb shell
 ~~~
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 $ adb shell
 root@Rockchip:/# 
 </pre>
+</details>
+
 
 ### Configurer 'sshd' sur la Kobra 3
 
@@ -58,15 +65,21 @@ pour une distribution Linux Ubuntu 20.04.
 ~~~
 cd /ac_lib/lib/openssh
 ~~~
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 root@Rockchip:/# cd /ac_lib/lib/openssh
 root@Rockchip:/ac_lib/lib/openssh# 
 </pre>
+</details>
+
 
 
 ~~~
 ./sshd_start.sh
 ~~~
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 root@Rockchip:/ac_lib/lib/openssh# ./sshd_start.sh 
 ssh_host_rsa_key file no exit, creating...
@@ -126,22 +139,24 @@ The key's randomart image is:
 no config, configing
 root@Rockchip:/ac_lib/lib/openssh# 
 </pre>
-
+</details>
 
 
 ~~~
 read pid < /var/run/sshd.pid
 kill $pid
 ~~~
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 root@Rockchip:/ac_lib/lib/openssh# read pid < /var/run/sshd.pid
 root@Rockchip:/ac_lib/lib/openssh# kill $pid
 root@Rockchip:/ac_lib/lib/openssh# 
 </pre>
+</detail>
 
 
-
-
+Modifier le fichier de configuration du serveur sshd
 ~~~
 vi etc/sshd_config
 ~~~
@@ -162,17 +177,20 @@ AuthorizedKeysFile      /ac_lib/lib/openssh/etc/authorized_keys
 ~~~
 > 
 > Save the file (Esc:wq )
+Pour sauver le "(Esc:wq)" signifie appuyer sur la touche "Echap", puis la touche ":" (permet de passer en mode commande sous vi), puis la touche "w" (pour écrire le fichier si en mode commande), puis la touche "q" (pour quiter vi si en mode commande).
 
 
-
-Sur une nouvelle console bash de votre ordinateur client.  
-Générer vous une clé RSA si vous n'en avaez pas déja une.
+Sur votre ordinateur client.  
+Dans une nouvelle console bash.  
+Générer vous (si pas déja fait) une clé RSA.
 ~~~
 cd ~/.ssh/
 ~~~
 ~~~
 ssh-keygen -t rsa
 ~~~
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 q6@q6-pc:~/.ssh$ ssh-keygen -t rsa
 Generating public/private rsa key pair.
@@ -197,19 +215,25 @@ The key's randomart image is:
 +----[SHA256]-----+
 q6@q6-pc:~/.ssh$ 
 </pre>
+</details>
 
-Transférer la clé public RSA vers la Kobra 3 via adb vers le fichier des clé authorisées ...
+Toujours sous cette cette nouvelle consol bash sous votre client.  
+Transférer la clé public RSA vers la Kobra 3 via adb vers le fichier des clé authorisées.  
 ~~~
 adb push id_rsa.pub /ac_lib/lib/openssh/etc/authorized_keys
 ~~~
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
 <pre>
 q6@q6-pc:~/.ssh$ adb push id_rsa.pub /ac_lib/lib/openssh/etc/authorized_keys
 id_rsa.pub: 1 file pushed. 0.1 MB/s (562 bytes in 0.004s)
 q6@q6-pc:~/.ssh$ 
 </pre>
+</details>
 
 
-De retour sur le shell adb connecté a la Kobra 3
+Revenir sur la fenettre où l'on se trouve connecté sur un shell de la Kobra 3 via adb  
+(Depuis la Kobra 3)  
 ~~~
 chmod 600 etc/authorized_keys
 ~~~
@@ -308,7 +332,12 @@ Ou graphiquement sous "Fichiers" (le gestionnaire de fichier par défaut sur une
 </pre>
 
 
+<details>
+ <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
+<pre>
 
+</pre>
+</details>
 
 
 -->
