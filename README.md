@@ -148,11 +148,12 @@ kill $pid
 ~~~
 <details>
  <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
-<code>
-root@Rockchip:/ac_lib/lib/openssh# read pid < /var/run/sshd.pid
+  <!-- Vérifier ce que donne le caractère inférieur qui me fait bugger le html  (non terminaison du block pre et details) si je ne le convertie pas -->
+<pre>
+root@Rockchip:/ac_lib/lib/openssh# read pid &lt; /var/run/sshd.pid
 root@Rockchip:/ac_lib/lib/openssh# kill $pid
 root@Rockchip:/ac_lib/lib/openssh# 
-</code>
+</pre>
 </detail>
 
 
