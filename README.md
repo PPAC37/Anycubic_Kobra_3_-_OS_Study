@@ -5,7 +5,7 @@ Merci a
 [https://github.com/Bushmills](https://github.com/Bushmills)  
 pour son dépot (et surtout le wiki de son dépot)  
 [https://github.com/Bushmills/Anycubic-Kobra-3-rooted](https://github.com/Bushmills/Anycubic-Kobra-3-rooted)  
-qui décrit une méthode pour accéder en root via `adb` au firmware de la "Kobra 3" d'Anycubic.
+qui décrit une méthode pour accéder en root via `adb` au firmware/ a l'OS de la "Kobra 3" d'Anycubic.
 
 ## Pré-requis
 
@@ -346,25 +346,31 @@ root@Rockchip:~#
 </pre>
 </details>
 
-Ou graphiquement sous "Fichiers" (le gestionnaire de fichier par défaut sur une Ubuntu 20.04) via "Autres emplacements", "Connexion à un serveur" (en bas de la fenetre) 
+Ou graphiquement sous "Fichiers" (le gestionnaire de fichier par défaut sur une Ubuntu 20.04)  
+via "Autres emplacements", "Connexion à un serveur" (en bas de la fenetre) 
+aprés avoir saisie,  
+~~~
+ssh://192.168.1.35
+~~~
+
 ![Capture d’écran de 2024-07-28 00-13-27](https://github.com/user-attachments/assets/861b73e5-78d5-4735-a422-7031207f229d)
-(Nom d'utilisateur root)
+
+cliquer sur "Se connecter"  
+
+et pour le nom d'utilisateur utiliser alors 
+~~~
+root
+~~~
+( pas de mot de passe car on a précédament pris le temps d'ajouter la clé RSA de notre client dans les clés autorisées par le serveur ssh sur la Kobra 3.)
+
+On arrive alors a plus simplement explorer/modifier l'arboressence de fichiers de la Kobra 3
+
 ![Capture d’écran de 2024-07-28 00-18-03](https://github.com/user-attachments/assets/61dcd320-a909-4319-b99e-6d0f3eddd154)
 
 
 
 <!--
-~~~
-
-~~~
-<pre>
-
-</pre>
-
-
-
-
-
+// TODO // Code template a effacer mais que je garde cous le coude pour l'instant.
 
 ~~~
 
