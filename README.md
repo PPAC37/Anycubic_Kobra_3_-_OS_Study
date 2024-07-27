@@ -141,9 +141,9 @@ root@Rockchip:/ac_lib/lib/openssh#
 </pre>
 </details>
 
-
+ <!-- Vérifier ce que donne le caractère inférieur qui me fait bugger le html  (non terminaison du block pre et details) si je ne le convertie pas -->
 ~~~
-read pid < /var/run/sshd.pid
+read pid &lt; /var/run/sshd.pid
 kill $pid
 ~~~
 <details>
