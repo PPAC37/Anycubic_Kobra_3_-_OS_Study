@@ -148,11 +148,11 @@ kill $pid
 ~~~
 <details>
  <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
-<pre>
+<code>
 root@Rockchip:/ac_lib/lib/openssh# read pid < /var/run/sshd.pid
 root@Rockchip:/ac_lib/lib/openssh# kill $pid
 root@Rockchip:/ac_lib/lib/openssh# 
-</pre>
+</code>
 </detail>
 
 
