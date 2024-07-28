@@ -179,7 +179,6 @@ kill $pid
 // ??? https://www.markdownguide.org/basic-syntax/#characters-you-can-escape
 <details>
  <summary>Résultat de la commande sur ma machine (Cliquez pour déplier!)</summary>
-
 <pre>
 root@Rockchip:/ac_lib/lib/openssh# read pid < /var/run/sshd.pid
 root@Rockchip:/ac_lib/lib/openssh# kill $pid
@@ -256,8 +255,8 @@ q6@q6-pc:~/.ssh$
 </pre>
 </details>
 
-Toujours sous cette cette nouvelle consol bash sous votre client.  
-Transférer la clé public RSA vers la Kobra 3 via adb vers le fichier des clé authorisées.  
+Toujours sous cette cette nouvelle console bash sous votre client.  
+Transférer la clé public RSA vers la "Kobra 3" via `adb push` vers le fichier des clés authorisées.  
 ~~~
 adb push id_rsa.pub /ac_lib/lib/openssh/etc/authorized_keys
 ~~~
@@ -299,7 +298,7 @@ root@Rockchip:/ac_lib/lib/openssh#
 </pre>
 </details>
 
-Et là enfin votre post client doit avoir la posibilité de se connecter a la Kobra 3 comme utilisateur root en SSH.  
+Et là enfin votre poste client doit avoir la posibilité de se connecter a la Kobra 3 comme utilisateur root en SSH.  
 
 
 (  
@@ -380,49 +379,32 @@ aprés avoir saisie,
 ~~~
 ssh://192.168.1.35
 ~~~
+ou
+~~~
+sftp://192.168.1.35
+~~~
 
 ![Capture d’écran de 2024-07-28 00-13-27](https://github.com/user-attachments/assets/861b73e5-78d5-4735-a422-7031207f229d)
 
 cliquer sur "Se connecter"  
 
-et pour le nom d'utilisateur utiliser alors 
+![Capture d’écran de 2024-07-28 03-04-10](https://github.com/user-attachments/assets/b3b9fe88-48e8-408e-87d9-ac93a170c68c)
+pour le nom d'utilisateur utiliser alors 
 ~~~
 root
 ~~~
-( pas de mot de passe car on a précédament pris le temps d'ajouter la clé RSA de notre client dans les clés autorisées par le serveur ssh sur la Kobra 3.)
+( pas de mot de passe car on ne le connais pas et il n'est pas modifiable sur la "Kobra 3" (dans un squashfs non modifiable),  
+mais on a précédament pris le temps d'ajouter la clé RSA de notre client dans les clés autorisées par le serveur ssh sur la "Kobra 3"  
+et donc la connexion dois pouvoir se faire sans utiliser de mot de passe).
 
-On arrive alors a plus simplement explorer/modifier l'arboressence de fichiers de la Kobra 3
+
+On arrive alors a plus simplement explorer/modifier certaine partie de l'arboressence de fichiers de la "Kobra 3".
 
 ![Capture d’écran de 2024-07-28 00-18-03](https://github.com/user-attachments/assets/61dcd320-a909-4319-b99e-6d0f3eddd154)
 
 ---
 
 ## D'autre résultat de commandes
-
-~~~
-find . | grep -e ".cfg"
-~~~
-<pre>
-root@Rockchip:/userdata# find . | grep -e ".cfg"
-./app/kenv/third/pycparser/_c_ast.cfg
-./app/gk/printer_mutable_20240720135034.cfg
-./app/gk/printer_mutable.cfg
-./app/gk/printer_mutable_20240720134230.cfg
-./app/gk/printer.cfg.1
-./app/gk/config/para.cfg
-./app/gk/config/ams_config.cfg
-./app/gk/config/api.cfg.1
-./app/gk/config/api.cfg
-./app/gk/printer.cfg
-./app/gk/temperature_sensors.cfg
-./app/gk/printer_mutable_20240727153553.cfg
-./wifi_cfg
-./wifi_cfg/wpa_supplicant.conf.bak
-./wifi_cfg/wpa_supplicant.conf
-root@Rockchip:/userdata# 
-</pre>
-
----
 
 ~~~
 mount
@@ -450,6 +432,164 @@ root@Rockchip:/#
 
 ---
 
+~~~
+df -h
+~~~
+<pre>
+root@Rockchip:~# df -h
+Filesystem                Size      Used Available Use% Mounted on
+/dev/root                 6.3M      6.3M         0 100% /
+devtmpfs                112.5M         0    112.5M   0% /dev
+tmpfs                   112.6M         0    112.6M   0% /dev/shm
+tmpfs                   112.6M     52.0K    112.5M   0% /tmp
+tmpfs                   112.6M    220.0K    112.3M   0% /run
+/dev/block/by-name/userdata
+                        487.6M    129.2M    336.3M  28% /userdata
+/dev/block/by-name/oem_b
+                         16.0M     16.0M         0 100% /oem
+/dev/block/by-name/ac_lib_b
+                        237.9M    108.1M    113.5M  49% /ac_lib
+/dev/block/by-name/ac_app_b
+                         56.7M     16.0K     54.1M   0% /ac_app
+/dev/block/by-name/useremain
+                          5.8G    228.0M      5.3G   4% /useremain
+root@Rockchip:~# 
+</pre>
+
+---
+
+
+~~~
+ls -la /dev/
+~~~
+<pre>
+root@Rockchip:~# ls -la /dev/
+crw-------    1 root     root      254,   0 gpiochip0
+crw-------    1 root     root      254,   1 gpiochip1
+crw-------    1 root     root      254,   2 gpiochip2
+crw-------    1 root     root      254,   3 gpiochip3
+crw-------    1 root     root      254,   4 gpiochip4
+crw-rw-r--    1 root     root       10, 242 rfkill
+crw-r-----    1 root     kmem        1,   1 mem
+crw-rw-rw-    1 root     root        1,   3 null
+crw-rw-rw-    1 root     root        1,   5 zero
+crw-rw-rw-    1 root     root        1,   7 full
+crw-rw-rw-    1 root     root        1,   8 random
+crw-rw-rw-    1 root     root        1,   9 urandom
+crw-r--r--    1 root     root        1,  11 kmsg
+crw-rw-rw-    1 root     tty         5,   0 tty
+crw-------    1 root     root        5,   1 console
+crw-rw-rw-    1 root     tty         5,   2 ptmx
+crw-rw----    1 root     dialout     4,  64 ttyS0
+crw-rw----    1 root     dialout     4,  65 ttyS1
+crw-rw----    1 root     dialout     4,  67 ttyS3
+crw-------    1 root     root       10, 183 hwrng
+drwxr-xr-x    2 root     root            60 rk_dma_heap
+drwxr-xr-x    3 root     root            60 bus
+drwxr-xr-x    4 root     root           160 input
+crw-------    1 root     root       10, 223 uinput
+crw-------    1 root     root       89,   4 i2c-4
+crw-------    1 root     root      249,   0 iio:device0
+crw-------    1 root     root       10, 127 cpu_dma_latency
+crw-rw----    1 root     video      29,   0 fb0
+drwxr-xr-x    3 root     root           100 dri
+crw-------    1 root     root       10, 126 ubi_ctrl
+crw-------    1 root     root      247,   0 mmcblk0rpmb
+brw-rw----    1 root     disk      179,   0 mmcblk0
+brw-rw----    1 root     disk      179,   1 mmcblk0p1
+brw-rw----    1 root     disk      179,   2 mmcblk0p2
+brw-rw----    1 root     disk      179,   3 mmcblk0p3
+brw-rw----    1 root     disk      179,   4 mmcblk0p4
+brw-rw----    1 root     disk      179,   5 mmcblk0p5
+brw-rw----    1 root     disk      179,   6 mmcblk0p6
+brw-rw----    1 root     disk      179,   7 mmcblk0p7
+brw-rw----    1 root     disk      179,   8 mmcblk0p8
+brw-rw----    1 root     disk      179,   9 mmcblk0p9
+brw-rw----    1 root     disk      179,  10 mmcblk0p10
+brw-rw----    1 root     disk      179,  11 mmcblk0p11
+brw-rw----    1 root     disk      179,  12 mmcblk0p12
+brw-rw----    1 root     disk      179,  13 mmcblk0p13
+brw-rw----    1 root     disk      179,  14 mmcblk0p14
+brw-rw----    1 root     disk      179,  15 mmcblk0p15
+brw-rw----    1 root     disk      179,  16 mmcblk0p16
+brw-rw----    1 root     disk      179,  17 mmcblk0p17
+brw-rw----    1 root     disk      179,  64 mmcblk0boot1
+brw-rw----    1 root     disk      179,  32 mmcblk0boot0
+drwxr-xr-x    2 root     root             0 pts
+drwxrwxrwx    2 root     root            40 shm
+lrwxrwxrwx    1 root     root            13 fd -> /proc/self/fd
+lrwxrwxrwx    1 root     root            15 stdin -> /proc/self/fd/0
+lrwxrwxrwx    1 root     root            15 stdout -> /proc/self/fd/1
+lrwxrwxrwx    1 root     root            15 stderr -> /proc/self/fd/2
+drwxr-xr-x    2 root     root          1460 char
+drwxr-xr-x    3 root     root           460 block
+drwxr-xr-x    6 root     root           120 disk
+drwxr-xr-x    3 root     root            60 usb-ffs
+crw-rw----    1 root     video     250,   0 media0
+crw-rw----    1 root     video      81,   0 video0
+crw-rw----    1 root     video      81,   1 video1
+crw-rw----    1 root     video      81,   2 video2
+crw-rw----    1 root     video      81,   3 video3
+crw-rw----    1 root     video      81,   4 video4
+crw-rw----    1 root     video      81,   5 video5
+crw-rw----    1 root     video      81,   6 video6
+crw-rw----    1 root     video      81,   7 video7
+crw-rw----    1 root     video      81,   8 video8
+crw-rw----    1 root     video      81,   9 video9
+crw-rw----    1 root     video      81,  10 v4l-subdev0
+crw-------    1 root     root       10, 125 rga
+crw-------    1 root     root      244,   0 mpp_service
+crw-------    1 root     root      243,   0 vcodec
+crw-------    1 root     root       10, 124 rknpu
+drwxr-xr-x    2 root     root           260 mpi
+drwxr-xr-x    4 root     root            80 v4l
+crw-rw----    1 root     video      81,  11 video10
+crw-rw----    1 root     video      81,  12 video11
+crw-rw----    1 root     video     250,   1 media1
+crw-rw----    1 root     dialout   166,   0 ttyACM0
+drwxr-xr-x    4 root     root            80 serial
+drwxr-xr-x   23 root     root           355 ..
+drwxr-xr-x   15 root     root          1720 .
+root@Rockchip:~# ls -la /dev/block/
+179:0     179:11    179:14    179:17    179:32    179:6     179:8
+179:1     179:12    179:15    179:2     179:4     179:64    179:9
+179:10    179:13    179:16    179:3     179:5     179:7     by-name/
+root@Rockchip:~# 
+</pre>
+
+---
+
+
+~~~
+ls -la /dev/block/by-name/
+~~~
+<pre>
+root@Rockchip:~# ls -la /dev/block/by-name/
+lrwxrwxrwx    1 root     root            14 env -> /dev/mmcblk0p1
+lrwxrwxrwx    1 root     root            14 idblock -> /dev/mmcblk0p2
+lrwxrwxrwx    1 root     root            14 uboot_a -> /dev/mmcblk0p3
+lrwxrwxrwx    1 root     root            14 uboot_b -> /dev/mmcblk0p4
+lrwxrwxrwx    1 root     root            14 misc -> /dev/mmcblk0p5
+lrwxrwxrwx    1 root     root            14 boot_a -> /dev/mmcblk0p6
+lrwxrwxrwx    1 root     root            14 boot_b -> /dev/mmcblk0p7
+lrwxrwxrwx    1 root     root            14 system_a -> /dev/mmcblk0p8
+lrwxrwxrwx    1 root     root            14 system_b -> /dev/mmcblk0p9
+lrwxrwxrwx    1 root     root            15 oem_a -> /dev/mmcblk0p10
+lrwxrwxrwx    1 root     root            15 oem_b -> /dev/mmcblk0p11
+lrwxrwxrwx    1 root     root            15 userdata -> /dev/mmcblk0p12
+lrwxrwxrwx    1 root     root            15 ac_lib_a -> /dev/mmcblk0p13
+lrwxrwxrwx    1 root     root            15 ac_lib_b -> /dev/mmcblk0p14
+lrwxrwxrwx    1 root     root            15 ac_app_a -> /dev/mmcblk0p15
+lrwxrwxrwx    1 root     root            15 ac_app_b -> /dev/mmcblk0p16
+lrwxrwxrwx    1 root     root            15 useremain -> /dev/mmcblk0p17
+drwxr-xr-x    3 root     root           460 ..
+drwxr-xr-x    2 root     root           380 .
+root@Rockchip:~# 
+</pre>
+
+---
+
+
 
 ~~~
 uname -a
@@ -466,7 +606,7 @@ root@Rockchip:/#
 ~~~
 lsusb
 ~~~
-Avec un ACE Pro, mais sans clé USB, de connectés.
+Avec un ACE Pro, et la caméra, mais sans clé USB, de connectés.
 <pre>
 root@Rockchip:/# lsusb
 Bus 001 Device 001: ID 1d6b:0002
@@ -610,6 +750,31 @@ root@Rockchip:/#
 
 
 
+
+~~~
+find . | grep -e ".cfg"
+~~~
+<pre>
+root@Rockchip:/userdata# find . | grep -e ".cfg"
+./app/kenv/third/pycparser/_c_ast.cfg
+./app/gk/printer_mutable_20240720135034.cfg
+./app/gk/printer_mutable.cfg
+./app/gk/printer_mutable_20240720134230.cfg
+./app/gk/printer.cfg.1
+./app/gk/config/para.cfg
+./app/gk/config/ams_config.cfg
+./app/gk/config/api.cfg.1
+./app/gk/config/api.cfg
+./app/gk/printer.cfg
+./app/gk/temperature_sensors.cfg
+./app/gk/printer_mutable_20240727153553.cfg
+./wifi_cfg
+./wifi_cfg/wpa_supplicant.conf.bak
+./wifi_cfg/wpa_supplicant.conf
+root@Rockchip:/userdata# 
+</pre>
+
+---
 
 
 
