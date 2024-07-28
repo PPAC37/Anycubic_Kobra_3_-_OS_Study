@@ -20,6 +20,9 @@ Je travaille ici avec une "Kobra 3" ayant un firmware V2.3.**2**.3_1.1.3_1.1.3_r
 
 ### Avoir connecté votre "Kobra 3" a votre réseau Wi-Fi et connaitre son adresse IP.
 
+![k3screen_1722126141](https://github.com/user-attachments/assets/3bd65eaa-222b-46f4-b652-108e9a5f723c)
+
+
 ### Avoir un ordinateur client (ici sous Ubuntu 20.04) connecté sur le même réseau.
 
 #### Avoir d'installé 'adb' ( Android Debug Bridge ) sur votre ordinateur client.
@@ -345,7 +348,7 @@ root@Rockchip:/#
 
 )
 
-**Bidouille pour lancer le serveur ssh lors du démarrage**  
+### Bidouille pour lancer le serveur ssh lors du démarrage
 
 Ajouter ce qui suit, 
 ~~~
@@ -382,7 +385,8 @@ root@Rockchip:~#
 </pre>
 </details>
 
-Ou graphiquement sous "Fichiers" (le gestionnaire de fichier par défaut sur une Ubuntu 20.04)  
+ou  
+graphiquement sous "Fichiers" (le gestionnaire de fichiers par défaut sur une Ubuntu 20.04)  
 via "Autres emplacements", "Connexion à un serveur" (en bas de la fenetre) 
 aprés avoir saisie,  
 ~~~
@@ -410,6 +414,18 @@ et donc la connexion dois pouvoir se faire sans utiliser de mot de passe).
 On arrive alors a plus simplement explorer/modifier certaine partie de l'arboressence de fichiers de la "Kobra 3".
 
 ![Capture d’écran de 2024-07-28 00-18-03](https://github.com/user-attachments/assets/61dcd320-a909-4319-b99e-6d0f3eddd154)
+
+
+Chemin du fichier de configuration Klipper `printer.cfg` 
+~~~
+/userdata/app/gk/printer.cfg
+~~~
+
+
+Chemin du dossier où sont stocké les fichier d'impression ".gcode"
+~~~
+/useremain/app/gk/gcodes
+~~~
 
 ---
 
