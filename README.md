@@ -1,10 +1,7 @@
 # Anycubic_Kobra_3_-_OS_Study
 Mes notes sur le firmware / l'OS "KobraOS" de la "Kobra 3"
 
-Merci à  
-[https://github.com/Bushmills](https://github.com/Bushmills)  
-pour le wiki son dépôt
-[https://github.com/Bushmills/Anycubic-Kobra-3-rooted](https://github.com/Bushmills/Anycubic-Kobra-3-rooted)  
+Merci à [https://github.com/Bushmills](https://github.com/Bushmills) pour le wiki de son dépôt [https://github.com/Bushmills/Anycubic-Kobra-3-rooted](https://github.com/Bushmills/Anycubic-Kobra-3-rooted)  
 qui décrit une méthode pour accéder en root via `adb` au firmware/ a l'OS de la "Kobra 3" d'Anycubic.
 
 (  
@@ -34,7 +31,7 @@ sudo apt-get install adb
   ...
 </pre>
 
-## Se connecter et ouvrir un shell via 'adb' depuis votre ordinateur client.
+## Se connecter et lancer un shell via 'adb' depuis votre ordinateur client.
 
 Adaptation de la méthode décrite sur  
 [https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/shell-to-Kobra-3](https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/shell-to-Kobra-3)  
