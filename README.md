@@ -50,6 +50,19 @@ sudo adb connect 192.168.1.35
 <details>
  <summary>Résultat de la commande sur ma machine (Cliquez pour déplier !)</summary>
 <pre>
+q6@q6-pc:~$ sudo adb connect 192.168.1.35
+[sudo] Mot de passe de q6 : 
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+connected to 192.168.1.35:5555
+q6@q6-pc:~$
+</pre>
+<pre>
+q6@q6-pc:~$ sudo adb connect 192.168.1.35
+already connected to 192.168.1.35:5555
+q6@q6-pc:~$ 
+</pre>
+<pre>
 $ sudo adb connect 192.168.1.35
 connected to 192.168.1.35:5555
 </pre>
