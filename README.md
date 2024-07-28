@@ -304,9 +304,9 @@ Et là enfin votre poste client doit avoir la posibilité de se connecter a la K
 (  
 
 
-Mais pour l'instant, le serveur sshd n'est pas re-lancé automatiquement et donc,  
+**Mais pour l'instant, le serveur sshd n'est pas re-lancé automatiquement et donc,  
 si on redémmare la Kobra 3,  
-il faudra relancer le serveur SSH via un shell adb connecté a la Kobra 3.
+il faudra relancer le serveur SSH via un shell adb connecté a la Kobra 3.**
 
 ~~~
 sudo adb connect 192.168.1.35
@@ -348,9 +348,21 @@ root@Rockchip:/#
 
 )
 
+**Bidouille pour lancer le serveur ssh lors du démarrage**  
+
+Ajouter ce qui suit, 
+~~~
+
+# Ligne suivante ajouté par PPAC, Pour automatiquement lancer le serveur ssh
+/ac_lib/lib/openssh/sshd_start.sh
+
+~~~
+en fin du fichier `/userdata/app/gk/start.sh` pour automatiquement démmaré le serveur ssh quand l'OS de l'imprimante démmare  
+( car `/etc/init.d/S90_app_run` appel `/userdata/app/kenv/run.sh` qui lui même appel `/userdata/app/gk/start.sh` )
 
 
-Enfin pour vous connecter depuis votre ordinateur client
+
+### Une fois tout cela fait, pour vous connecter depuis votre ordinateur client
 ~~~
 ssh 192.168.1.35 -l root
 ~~~
