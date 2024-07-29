@@ -5,14 +5,16 @@
 # examples:   k3screen           # let script choose file name
 #             k3screen name      # specify file name
 
-#PPAC: 
+#PPAC : 
 kobra3="192.168.1.35"
 
+# Original :
 dim="480x272"
 name="${1:-k3screen_$EPOCHSECONDS}"
 in="$name.raw"
 out="$name.png"
 
+# PPAC :
 # A revoir l'idée c'est faire le adb connect si pas deja fait. mais avant il faudrait même proposer de faire un sudo apt-get install adb si adb n'est pas dispo sur le système
 #
 # q6@q6-pc:~$ sudo adb connect 192.168.1.35
@@ -47,8 +49,9 @@ echo adb pull /userdata/$in
 
 adb pull /userdata/$in
 
+# Il y a un ffmpeg dans le systeme de fichier de la Kobra 3. eventuellement tester si ok de l'utiliser et proposer le choix
 
-#PPAC: 
+# Original :
 #ffmpeg -y -display_rotation 90 -pix_fmt rgb32 -s $dim -i "$in" "$out" && rm "$in"
 ## Unrecognized option 'display_rotation'.
 
@@ -56,10 +59,10 @@ adb pull /userdata/$in
 echo ffmpeg -y -pix_fmt rgb32 -s $dim -i "$in" "$out" 
 echo rm "$in"
 
-# "-loglevel -8" // = quiet (no output)
+# "-loglevel -8" // = quiet (no console verbose output)
 ffmpeg -loglevel -8 -y -pix_fmt rgb32 -s $dim -i "$in" "$out" && rm -v "$in"
 
-# A faire sudo apt-get install imagemagic si pas de commande convert de disponible sur le système
+# A faire "sudo apt-get install imagemagick" si pas de commande convert de disponible sur le système
 
 #DEBUG
 echo convert "$out" -rotate -90 "$out"
