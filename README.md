@@ -45,13 +45,12 @@ Ici `192.168.1.35` est l'adresse IP affectée par le serveur DHCP par ma box int
 
 Connecter `adb` a votre "Kobra 3"
 ~~~
-sudo adb connect 192.168.1.35
+adb connect 192.168.1.35
 ~~~
 <details>
  <summary>Résultat de la commande sur ma machine (Cliquez pour déplier !)</summary>
 <pre>
-q6@q6-pc:~$ sudo adb connect 192.168.1.35
-[sudo] Mot de passe de q6 : 
+q6@q6-pc:~$ adb connect 192.168.1.35
 * daemon not running; starting now at tcp:5037
 * daemon started successfully
 connected to 192.168.1.35:5555
