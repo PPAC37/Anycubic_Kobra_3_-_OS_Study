@@ -7,7 +7,8 @@
 
 ---
 
-Un connecteur pour tube PTFE ayant 8 entrée et 4 sortie mais je ne sais pas si c'est ou non le "HubPro"
+Post Facebook avec des vidéos où l'on voit fonctionner deux "ACE Pro" reliés a la "Kobra 3" via un connecteur pour tubes PTFE ayant 8 entrées et 4 sorties.  
+Mais je ne sais pas si c'est ou non le "HubPro".
 
 https://www.facebook.com/groups/kobra3printer/posts/1567455417452579
 
