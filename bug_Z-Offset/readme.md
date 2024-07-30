@@ -118,7 +118,9 @@ reboot
 Et là cela semble bon.  
 Il y a bien plusieur plapage au centre en début d'impression et on a un Z-Offset automatiquement déterminé affiché de 0.07 a 0.11
 
-![k3screen_1722328827](https://github.com/user-attachments/assets/c0c48776-674c-407b-8363-8a9381b8017f)
+![printing_k3screen_1722332357](https://github.com/user-attachments/assets/f1090cf6-e113-4116-984b-66c0a2dc4eb6)
+![printing_settings_k3screen_1722331906](https://github.com/user-attachments/assets/f79c72c5-6542-4001-8899-5033873bc3ca)
+![printing_settings_ZOffset_after_reset_k3screen_1722328827](https://github.com/user-attachments/assets/c0c48776-674c-407b-8363-8a9381b8017f)
 
 
 Mais bien fair "Cancel" pour ne pas risquer de le modifier
