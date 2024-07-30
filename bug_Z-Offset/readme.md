@@ -86,7 +86,7 @@ root@Rockchip:~#
 
 ------
 
-Bidouille pour réinitialiser le Z-Offset sans avoir a faire le reset
+## Bidouille pour réinitialiser le Z-Offset sans avoir a faire le reset
 
 Pour réactiver la détermination présice du Z-Offset ( plusieur palpage au centre du plateau, apres le passage sur le système de néttoyage du nez de la buse a l'arrière du plateau )
 ~~~
