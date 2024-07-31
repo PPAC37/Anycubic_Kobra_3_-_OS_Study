@@ -1,7 +1,7 @@
 
 Pas vraiment d'information pour le moment.
 
-Chez Anycubic, pour l'instant (2027-07-31) seuls les bobines 
+Chez Anycubic, pour l'instant (2024-07-31) seuls les bobines 
 * couleur pantone Anycubic
   * https://store.anycubic.com/products/pla-basic-pantone-color-filament?variant=44483185410210
    
