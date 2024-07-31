@@ -35,3 +35,25 @@ https://discord.com/channels/966957505580236851/1230084715185442857/126805651419
 
 
 ---
+
+
+
+https://discord.com/channels/966957505580236851/1230084715185442857/1268252511878385694
+
+> I don't see how the RFID would effect Z offset unless there is some weird bug in the firmware corrupting things. Looking at the content of the RFID, its color, PLA, manufacturer and checksums. See below.
+
+![RFID_Tag_A_Verif](./image.webp)
+
+Source image https://media.discordapp.net/attachments/1230084715185442857/1268252519369281536/image.png?ex=66abbfb3&is=66aa6e33&hm=92dfe7d433bce72c73ae7fd2e7a24bc703c02e602803c953515a27d5a3a638ee&=&format=webp&quality=lossless
+
+
+
+
+
+
+
+---
+
+
+
+
