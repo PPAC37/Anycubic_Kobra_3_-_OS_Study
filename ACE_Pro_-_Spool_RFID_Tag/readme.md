@@ -19,6 +19,7 @@ semblent avoir un tag RFID.
 
  Pour référence 
  * [[BREAKING NEWS] Les tags RFID des Bambu (pour usage AMS) ont été partiellement décodées](https://www.lesimprimantes3d.fr/forum/topic/51738-breaking-news-les-tags-rfid-des-bambu-pour-usage-ams-ont-%C3%A9t%C3%A9-partiellement-d%C3%A9cod%C3%A9es/?do=findComment&comment=534263)
+   * https://github.com/Bambu-Research-Group/RFID-Tag-Guide?tab=readme-ov-file#block-overview
 
 ---
 
