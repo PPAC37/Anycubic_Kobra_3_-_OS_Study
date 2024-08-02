@@ -89,6 +89,12 @@ root@Rockchip:~#
 ## Bidouille pour réinitialiser le Z-Offset sans avoir a faire le reset
 
 Pour réactiver la détermination présice du Z-Offset ( plusieur palpage au centre du plateau, apres le passage sur le système de néttoyage du nez de la buse a l'arrière du plateau )
+
+Connecté en root sur la Kobra 3 ( via `adb connect <ip_Kobra3> ; adb shell` ou si vous avez configurer le serveur ssh via `ssh root@<ip_Kobra3>` )
+
+Il s'agit de modifier le fichier  `/userdata/app/gk/printer_mutable.cfg`
+
+
 ~~~
 cat /userdata/app/gk/printer_mutable.cfg | sed "s/\"auto_zoffset_on_off\": \"0\"/\"auto_zoffset_on_off\": \"1\"/" | sed "s/\"z_offset\": \".*\"/\"z_offset\": \"-0.0750\"/" > /userdata/app/gk/printer_mutable.cfg.new
 ~~~
