@@ -92,7 +92,7 @@ Pour réactiver la détermination présice du Z-Offset ( plusieur palpage au cen
 
 Connecté en root sur la Kobra 3 ( via `adb connect <ip_Kobra3> ; adb shell` ou si vous avez configurer le serveur ssh via `ssh root@<ip_Kobra3>` )
 
-Il s'agit de modifier le fichier  `/userdata/app/gk/printer_mutable.cfg`
+Il s'agit de modifier le fichier  `/userdata/app/gk/printer_mutable.cfg` pour y mettre `"auto_zoffset_on_off" : ` a `"1"` et mettre une valeur cohérente pour `"z_offset": ` comme par exemple `"-0.0750"`.
 
 
 ~~~
@@ -114,6 +114,9 @@ root@Rockchip:~#
 </pre>
 
 
+Sauver printer_mutable.cfg en le déplacent de manière a le renommer.  
+Mettre le nouveau printer_mutable.cfg corrigé a la place.  
+Faire un reboot.  
 
 ~~~
 mv /userdata/app/gk/printer_mutable.cfg /userdata/app/gk/printer_mutable_`date "+%Y%m%d%H%M%S"`.cfg
