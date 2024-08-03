@@ -6,14 +6,14 @@ qui décrit une méthode pour accéder en root via `adb` au firmware/ a l'OS de 
 
 (  
 A cette date 2024-07-28, cette méthode semble fonctionner avec le firmware  
-V2.3.**1**.3_1.1.3_1.1.3_release  
+V2.3.**1**.3_1.1.6_1.1.6_release  
 et  
-V2.3.**2**.3_1.1.3_1.1.3_release  
+V2.3.**2**.3_1.1.6_1.1.6_release  
 de la "Kobra 3"  
 )
 
 
-Je travaille ici avec une "Kobra 3" ayant un firmware V2.3.**2**.3_1.1.3_1.1.3_release.
+Je travaille ici avec une "Kobra 3" ayant un firmware V2.3.**2**.3_1.1.3_1.1.6_release.
 
 
 ## Pré-requis
