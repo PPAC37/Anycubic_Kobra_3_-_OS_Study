@@ -13,7 +13,7 @@ de la "Kobra 3"
 )
 
 
-Je travaille ici avec une "Kobra 3" ayant un firmware V2.3.**2**.3_1.1.3_1.1.6_release.
+Je travaille ici avec une "Kobra 3" ayant un firmware V2.3.**2**.3_1.1.6_1.1.6_release.
 
 
 ## Pré-requis
