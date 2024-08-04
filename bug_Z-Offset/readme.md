@@ -88,11 +88,18 @@ root@Rockchip:~#
 
 ## Bidouille pour réinitialiser le Z-Offset sans avoir à faire un "reset"
 
-Pour réactiver la détermination précise du Z-Offset (plusieurs palpages au centre du plateau, après passage sur le système de nettoyage du nez de buse à l'arrière du plateau)
+Pour réactiver la détermination précise du Z-Offset  
+(plusieurs palpages au centre du plateau, après passage sur le système de nettoyage du nez de buse à l'arrière du plateau)
 
-Connecté en root sur la Kobra 3 ( via `adb connect <ip_Kobra3>` puis `adb shell` ou, si vous avez configuré le serveur ssh, via un `ssh root@<ip_Kobra3>` voir [https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/Gaining-access-to-the-printer](https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/Gaining-access-to-the-printer))
+Connecté en root sur la Kobra 3  
+(  
+via `adb connect <ip_Kobra3>` puis `adb shell` voir [https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/Gaining-access-to-the-printer](https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/Gaining-access-to-the-printer) -> [https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/shell-to-Kobra-3](https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/shell-to-Kobra-3)    
+ou, si vous avez configuré le serveur ssh, via un `ssh root@<ip_Kobra3>`  
+)
 
-Il s'agit de modifier le fichier  `/userdata/app/gk/printer_mutable.cfg` pour y mettre `"auto_zoffset_on_off" : ` a `"1"` et mettre une valeur cohérente pour `"z_offset": ` comme par exemple `"-0.0750"`.
+Il s'agit de modifier le fichier  `/userdata/app/gk/printer_mutable.cfg`  
+pour y mettre `"auto_zoffset_on_off" : ` a `"1"`  
+et mettre une valeur cohérente pour `"z_offset": ` comme par exemple `"-0.0750"`.
 
 
 La commande suivante créée un nouveau fichier `/userdata/app/gk/printer_mutable.cfg.new` avec les modifications précédament mentionnées, depuis le fichier `/userdata/app/gk/printer_mutable.cfg` actuelle.
@@ -104,7 +111,8 @@ Pour vérifier les modifications avant d'utiliser le nouveau fichier `/userdata/
 
 (  
 
-malheureusement, il n'y a pas la commande `diff` sur l'OS de la Kobra 3, il faut donc faire l'équivalent soi-même ... là, je regarde juste les lignes qui continnent le texte `offset`
+malheureusement, il n'y a pas la commande `diff` sur l'OS de la Kobra 3, il faut donc faire l'équivalent soi-même ...   
+là, je regarde juste les lignes qui continnent le texte `offset`
 
 ~~~
 grep -F offset /userdata/app/gk/printer_mutable.cfg
@@ -122,7 +130,7 @@ root@Rockchip:~#
 </pre>
 )
 
-Si tout semble OK, exécuter les trois commandes suivantes,
+Si tout semble OK, exécuter les trois commandes suivantes,  
 pour, déplacer printer_mutable.cfg en le renommant avec un timestape de manière a le sauvegarder (si jamais),  
 ~~~
 mv /userdata/app/gk/printer_mutable.cfg /userdata/app/gk/printer_mutable_`date "+%Y%m%d%H%M%S"`.cfg
@@ -139,7 +147,7 @@ reboot
 
 ~~~
 
-Et là cela semble bon.  
+Et là cela semble bon.   
 Il y a bien plusieur plapages au centre en début d'impression et on a un Z-Offset automatiquement déterminé affiché de 0.07 a 0.11
 
 ![printing_k3screen_1722332357](https://github.com/user-attachments/assets/f1090cf6-e113-4116-984b-66c0a2dc4eb6)
