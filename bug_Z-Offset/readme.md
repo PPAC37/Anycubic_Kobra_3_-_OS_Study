@@ -119,7 +119,7 @@ q6@q6-pc:~$ adb connect 192.168.1.35
 connected to 192.168.1.35:5555
 q6@q6-pc:~$
 </pre>
-// Si le service adb etait déja démmaré
+// Si le service adb etait déja démmaré et la connexion déja effectuée
 <pre>
 q6@q6-pc:~$ adb connect 192.168.1.35
 already connected to 192.168.1.35:5555
@@ -134,7 +134,7 @@ adb shell
 ~~~
 Résultat de la commande sur ma machine
 <pre>
-$ adb shell
+q6@q6-pc:~$ adb shell
 root@Rockchip:/# 
 </pre>
 
