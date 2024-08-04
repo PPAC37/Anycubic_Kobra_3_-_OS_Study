@@ -97,6 +97,59 @@ via `adb connect <ip_Kobra3>` puis `adb shell` voir [https://github.com/Bushmill
 ou, si vous avez configuré le serveur ssh, via un `ssh root@<ip_Kobra3>`  
 )
 
+Adaptation de la méthode décrite sur  
+[https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/shell-to-Kobra-3](https://github.com/Bushmills/Anycubic-Kobra-3-rooted/wiki/shell-to-Kobra-3)  
+pour une distribution Linux Ubuntu 20.04.
+
+Ici `192.168.1.35` est l'adresse IP affectée par le serveur DHCP par ma box internet a ma "Kobra 3" sur mon réseau local. (il vous faudra adapter les commande suivante, et éventuellement faire une règle d'association d'un IP fixe pour l'adresse MAC de votre "Kobra 3")
+
+
+Connecter `adb` a votre "Kobra 3"
+~~~
+adb connect 192.168.1.35
+~~~
+<details>
+ <summary>Résultat de la commande sur ma machine ici une Ubuntu 20.04 (Cliquez pour déplier !)</summary>
+<pre>
+q6@q6-pc:~$ adb connect 192.168.1.35
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+connected to 192.168.1.35:5555
+q6@q6-pc:~$
+</pre>
+<pre>
+q6@q6-pc:~$ sudo adb connect 192.168.1.35
+already connected to 192.168.1.35:5555
+q6@q6-pc:~$ 
+</pre>
+<pre>
+$ sudo adb connect 192.168.1.35
+connected to 192.168.1.35:5555
+</pre>
+</details>
+
+
+Après connexion réussie de `adb` a votre "Kobra 3",  
+ouvrir un shell via la commande `adb shell`
+~~~
+adb shell
+~~~
+Résultat de la commande sur ma machine
+<pre>
+$ adb shell
+root@Rockchip:/# 
+</pre>
+
+
+Vérifier la version du firmware
+~~~
+grep -F version /userdata/app/gk/version_log.txt
+~~~
+<pre>
+root@Rockchip:~# grep -F version /userdata/app/gk/version_log.txt
+version: 2.3.2.3
+</pre>
+
 Il s'agit de modifier le fichier  `/userdata/app/gk/printer_mutable.cfg`  
 pour y mettre `"auto_zoffset_on_off" : ` a `"1"`  
 et mettre une valeur cohérente pour `"z_offset": ` comme par exemple `"-0.0750"`.
