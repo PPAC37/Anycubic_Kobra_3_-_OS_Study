@@ -105,6 +105,8 @@ pour une distribution Linux Ubuntu 20.04.
 
 Ici `192.168.1.35` est l'adresse IP affectée par le serveur DHCP par ma box internet a ma "Kobra 3" sur mon réseau local. (il vous faudra adapter les commande suivante, et éventuellement faire une règle d'association d'un IP fixe pour l'adresse MAC de votre "Kobra 3")
 
+![k3screen_1722126141](https://github.com/user-attachments/assets/3bd65eaa-222b-46f4-b652-108e9a5f723c)
+
 
 Connecter `adb` a votre "Kobra 3"
 ~~~
