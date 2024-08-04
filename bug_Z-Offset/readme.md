@@ -1,5 +1,5 @@
 
-
+<!--
 [https://discord.com/channels/966957505580236851/1262727644571762751](https://discord.com/channels/966957505580236851/1262727644571762751)
 
 ---
@@ -86,6 +86,8 @@ root@Rockchip:~#
 
 ------
 
+-->
+
 ## Bidouille pour réinitialiser le Z-Offset sans avoir à faire un "reset"
 
 Pour réactiver la détermination précise du Z-Offset  
@@ -108,8 +110,8 @@ Connecter `adb` a votre "Kobra 3"
 ~~~
 adb connect 192.168.1.35
 ~~~
-<details>
- <summary>Résultat de la commande sur ma machine ici une Ubuntu 20.04 (Cliquez pour déplier !)</summary>
+Résultat de la commande sur ma machine ici une Ubuntu 20.04  
+// Si le "service"/"daemon" adb n'était pas encore démmarré
 <pre>
 q6@q6-pc:~$ adb connect 192.168.1.35
 * daemon not running; starting now at tcp:5037
@@ -117,16 +119,12 @@ q6@q6-pc:~$ adb connect 192.168.1.35
 connected to 192.168.1.35:5555
 q6@q6-pc:~$
 </pre>
+// Si le service adb etait déja démmaré
 <pre>
-q6@q6-pc:~$ sudo adb connect 192.168.1.35
+q6@q6-pc:~$ adb connect 192.168.1.35
 already connected to 192.168.1.35:5555
 q6@q6-pc:~$ 
 </pre>
-<pre>
-$ sudo adb connect 192.168.1.35
-connected to 192.168.1.35:5555
-</pre>
-</details>
 
 
 Après connexion réussie de `adb` a votre "Kobra 3",  
@@ -150,7 +148,8 @@ root@Rockchip:~# grep -F version /userdata/app/gk/version_log.txt
 version: 2.3.2.3
 </pre>
 
-Il s'agit de modifier le fichier  `/userdata/app/gk/printer_mutable.cfg`  
+
+De là, il s'agit de modifier le fichier  `/userdata/app/gk/printer_mutable.cfg`  
 pour y mettre `"auto_zoffset_on_off" : ` a `"1"`  
 et mettre une valeur cohérente pour `"z_offset": ` comme par exemple `"-0.0750"`.
 
